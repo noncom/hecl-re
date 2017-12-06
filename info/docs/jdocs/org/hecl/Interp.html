@@ -1,0 +1,2043 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<TITLE>
+Interp
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Interp";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Interp.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../org/hecl/IntegralThing.html" title="class in org.hecl"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../org/hecl/Interp.WaitToken.html" title="class in org.hecl"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../index.html?org/hecl/Interp.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="Interp.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.hecl</FONT>
+<BR>
+Class Interp</H2>
+<PRE>
+java.lang.Object
+  <IMG SRC="../../resources/inherit.gif" ALT="extended by ">java.lang.Thread
+      <IMG SRC="../../resources/inherit.gif" ALT="extended by "><B>org.hecl.Interp</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD>java.lang.Runnable</DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public class <B>Interp</B><DT>extends java.lang.Thread</DL>
+</PRE>
+
+<P>
+<code>Interp</code> is the Hecl interpreter, the class responsible for
+ knowing what variables and commands are available.
+<P>
+
+<P>
+<DL>
+<DT><B>Version:</B></DT>
+  <DD>1.0</DD>
+<DT><B>Author:</B></DT>
+  <DD><a href="mailto:davidw@dedasys.com">David N. Welton </a></DD>
+</DL>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.WaitToken.html" title="class in org.hecl">Interp.WaitToken</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="nested_classes_inherited_from_class_java.lang.Thread"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Nested classes/interfaces inherited from class java.lang.Thread</B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE>java.lang.Thread.State, java.lang.Thread.UncaughtExceptionHandler</CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#ALL_EVENTS">ALL_EVENTS</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#ASYNCPREFIX">ASYNCPREFIX</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some string constants used to generate names for internal events.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Vector</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#asyncs">asyncs</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Hashtable</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#auxdata">auxdata</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>auxdata</code> <code>Hashtable</code> is a place to
+ store extra information about the state of the program.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cacheversion">cacheversion</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Vector</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#ci">ci</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Hashtable</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#classcmdcache">classcmdcache</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Hashtable</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#commands">commands</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>commands</code> <code>Hashtable</code> provides the
+ mapping from the strings containing command names to the code
+ implementing the commands.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#currentFile">currentFile</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#DONT_WAIT">DONT_WAIT</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags for the event loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;char[]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#eol">eol</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>eol</code> is the end-of-line character or characters.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Stack</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#error">error</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#fileseparator">fileseparator</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>fileseparator</code> is the file separator, such as "/".</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Vector</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#idle">idle</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#IDLE_EVENTS">IDLE_EVENTS</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#idlegeneration">idlegeneration</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#IDLEPREFIX">IDLEPREFIX</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#maxblocktime">maxblocktime</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#MODULE_CLASS_PACKAGE">MODULE_CLASS_PACKAGE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Package name prefix of the module classes.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#PROMPT">PROMPT</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The prompt for the <code>readEvalPrint</code> loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#PROMPT2">PROMPT2</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The prompt for continued lines in the <code>readEvalPrint</code> loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#running">running</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Stack</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#stack">stack</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#TIMER_EVENTS">TIMER_EVENTS</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#TIMERPREFIX">TIMERPREFIX</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Vector</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#timers">timers</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.util.Hashtable</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#waittokens">waittokens</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="fields_inherited_from_class_java.lang.Thread"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Fields inherited from class java.lang.Thread</B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE>MAX_PRIORITY, MIN_PRIORITY, NORM_PRIORITY</CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#Interp()">Interp</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new <code>Interp</code> instance, initializing command and
+ variable hashtables, a stack, and an error stack.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#addClassCmd(java.lang.Class, org.hecl.ClassCommand)">addClassCmd</A></B>(java.lang.Class&nbsp;clazz,
+            <A HREF="../../org/hecl/ClassCommand.html" title="interface in org.hecl">ClassCommand</A>&nbsp;cmd)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add a new class command to an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#addCommand(java.lang.String, org.hecl.Command)">addCommand</A></B>(java.lang.String&nbsp;name,
+           <A HREF="../../org/hecl/Command.html" title="interface in org.hecl">Command</A>&nbsp;c)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add a new command to an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#addError(org.hecl.Thing)">addError</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;err)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>addError</code> adds a Thing as an error message.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#addTimer(org.hecl.Thing, int)">addTimer</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;timerThing,
+         int&nbsp;millisecs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#backgroundError(java.lang.String)">backgroundError</A></B>(java.lang.String&nbsp;errorMessage)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>backgroundError</code> method can be called to
+ dispatch a bgerror command.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cancelAsync(java.lang.String)">cancelAsync</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cancelIdle(org.hecl.HeclTask)">cancelIdle</A></B>(<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A>&nbsp;idletask)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cancelIdle(java.lang.String)">cancelIdle</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cancelTimer(java.lang.String)">cancelTimer</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#checkArgCount(org.hecl.Thing[], int, int)">checkArgCount</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>[]&nbsp;argv,
+              int&nbsp;minargs,
+              int&nbsp;maxargs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>checkArgCount</code> checks to see whether the command
+ actually has the required number of arguments.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#clearError()">clearError</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>clearError</code> clears the error stack.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cmdAlias(java.lang.String, java.lang.String)">cmdAlias</A></B>(java.lang.String&nbsp;oldname,
+         java.lang.String&nbsp;newname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#cmdRename(java.lang.String, java.lang.String)">cmdRename</A></B>(java.lang.String&nbsp;oldname,
+          java.lang.String&nbsp;newname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>cmdRename</code> method renames a command, or throws
+ an error if the original command didn't exist.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#commandExists(java.lang.String)">commandExists</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>commandExists</code> method returns true if a command
+ exists, otherwise false.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#doOneEvent(int)">doOneEvent</A></B>(int&nbsp;flags)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#eval(org.hecl.Thing)">eval</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>eval</code> method evaluates some Hecl code passed to
+ it.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#eval(org.hecl.Thing, int)">eval</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in,
+     int&nbsp;level)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This version of <code>eval</code> takes a 'level' argument that
+ tells Hecl what level to run the code at.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#evalAsync(org.hecl.Thing)">evalAsync</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;asyncThing)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#evalAsyncAndWait(org.hecl.Thing)">evalAsyncAndWait</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#evalIdle(org.hecl.Thing)">evalIdle</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;idleThing)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#existsVar(java.lang.String)">existsVar</A></B>(java.lang.String&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the current variable stack frame, <code>false</code>
+ if it does not.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#existsVar(java.lang.String, int)">existsVar</A></B>(java.lang.String&nbsp;varname,
+          int&nbsp;level)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the variable stack frame given by <code>level</code>,
+ <code>false</code> if it does not.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#existsVar(org.hecl.Thing)">existsVar</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the current variable stack frame, <code>false</code>
+ if it does not.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.util.Vector</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getAllEvents()">getAllEvents</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.Object</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getAuxData(java.lang.String)">getAuxData</A></B>(java.lang.String&nbsp;key)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieve auxiliary data from an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getEvent(java.lang.String)">getEvent</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getVar(java.lang.String)">getVar</A></B>(java.lang.String&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>getVar</code> returns the value of a variable given its name.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getVar(java.lang.String, int)">getVar</A></B>(java.lang.String&nbsp;varname,
+       int&nbsp;level)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>getVar</code> returns the value of a variable given its name and
+ level.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#getVar(org.hecl.Thing)">getVar</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>getVar</code> returns the value of a variable given its name.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.lang.String[]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#hashKeysToArray(java.util.Hashtable)">hashKeysToArray</A></B>(java.util.Hashtable&nbsp;h)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.lang.String[]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#hashKeysToArray(java.util.Hashtable, java.lang.String)">hashKeysToArray</A></B>(java.util.Hashtable&nbsp;h,
+                java.lang.String&nbsp;prefix)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#hasIdleTasks()">hasIdleTasks</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#nextTask(java.util.Vector, long)">nextTask</A></B>(java.util.Vector&nbsp;v,
+         long&nbsp;until)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>nextTask</code> extracts first element from given vector.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#notifyToken(java.lang.String)">notifyToken</A></B>(java.lang.String&nbsp;tokenname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#readEvalPrint(java.io.InputStream, java.io.PrintStream, java.io.PrintStream)">readEvalPrint</A></B>(java.io.InputStream&nbsp;in,
+              java.io.PrintStream&nbsp;out,
+              java.io.PrintStream&nbsp;err)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>commandLine</code> method implements a
+ Read/Eval/Print Loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#removeAuxData(java.lang.String)">removeAuxData</A></B>(java.lang.String&nbsp;key)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove auxiliary data from an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#removeClassCmd(java.lang.Class)">removeClassCmd</A></B>(java.lang.Class&nbsp;clazz)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove a command for a specific class from an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#removeCommand(java.lang.String)">removeCommand</A></B>(java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove a command from an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#run()">run</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#serviceIdleTask()">serviceIdleTask</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Service at most one idle task of the idle task queue.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#setAuxData(java.lang.String, java.lang.Object)">setAuxData</A></B>(java.lang.String&nbsp;key,
+           java.lang.Object&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attach auxiliary data to an <code>Interp</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#setVar(java.lang.String, org.hecl.Thing)">setVar</A></B>(java.lang.String&nbsp;varname,
+       <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>setVar</code> sets a variable in the innermost variable stack
+ frame to a value.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#setVar(java.lang.String, org.hecl.Thing, int)">setVar</A></B>(java.lang.String&nbsp;varname,
+       <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value,
+       int&nbsp;level)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>setVar</code> sets a variable to a value in the variable stack
+ frame specified by <code>level</code>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#setVar(org.hecl.Thing, org.hecl.Thing)">setVar</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname,
+       <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>setVar</code> sets a variable in the innermost variable stack
+ frame to a value.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.util.Hashtable</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#stackDecr()">stackDecr</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>stackDecr</code> pops the stack frame, returning it so that
+ commands like upeval can save it.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#stackIncr()">stackIncr</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>stackIncr</code> method creates a new stack frame.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#stackPush(java.util.Hashtable)">stackPush</A></B>(java.util.Hashtable&nbsp;vars)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>stackDecr</code> pushes a new variable hashtable
+ (probably saved via upeval) onto the stack frame.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#terminate()">terminate</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>terminate</code> method terminates the Hecl
+ interpreter thread in a graceful manner.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#unSetVar(java.lang.String)">unSetVar</A></B>(java.lang.String&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#unSetVar(java.lang.String, int)">unSetVar</A></B>(java.lang.String&nbsp;varname,
+         int&nbsp;level)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#unSetVar(org.hecl.Thing)">unSetVar</A></B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>unSetVar</code> unsets a variable in the current stack
+ frame.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../org/hecl/Interp.html#waitForToken(java.lang.String)">waitForToken</A></B>(java.lang.String&nbsp;tokenname)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Thread"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.Thread</B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE>activeCount, checkAccess, countStackFrames, currentThread, destroy, dumpStack, enumerate, getAllStackTraces, getContextClassLoader, getDefaultUncaughtExceptionHandler, getId, getName, getPriority, getStackTrace, getState, getThreadGroup, getUncaughtExceptionHandler, holdsLock, interrupt, interrupted, isAlive, isDaemon, isInterrupted, join, join, join, resume, setContextClassLoader, setDaemon, setDefaultUncaughtExceptionHandler, setName, setPriority, setUncaughtExceptionHandler, sleep, sleep, start, stop, stop, suspend, toString, yield</CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.Object</B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="MODULE_CLASS_PACKAGE"><!-- --></A><H3>
+MODULE_CLASS_PACKAGE</H3>
+<PRE>
+public static final java.lang.String <B>MODULE_CLASS_PACKAGE</B></PRE>
+<DL>
+<DD>Package name prefix of the module classes.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.MODULE_CLASS_PACKAGE">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="DONT_WAIT"><!-- --></A><H3>
+DONT_WAIT</H3>
+<PRE>
+public static final int <B>DONT_WAIT</B></PRE>
+<DL>
+<DD>Flags for the event loop.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.DONT_WAIT">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="IDLE_EVENTS"><!-- --></A><H3>
+IDLE_EVENTS</H3>
+<PRE>
+public static final int <B>IDLE_EVENTS</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.IDLE_EVENTS">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="TIMER_EVENTS"><!-- --></A><H3>
+TIMER_EVENTS</H3>
+<PRE>
+public static final int <B>TIMER_EVENTS</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.TIMER_EVENTS">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="ALL_EVENTS"><!-- --></A><H3>
+ALL_EVENTS</H3>
+<PRE>
+public static final int <B>ALL_EVENTS</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.ALL_EVENTS">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="ASYNCPREFIX"><!-- --></A><H3>
+ASYNCPREFIX</H3>
+<PRE>
+public static final java.lang.String <B>ASYNCPREFIX</B></PRE>
+<DL>
+<DD>Some string constants used to generate names for internal events.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.ASYNCPREFIX">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="IDLEPREFIX"><!-- --></A><H3>
+IDLEPREFIX</H3>
+<PRE>
+public static final java.lang.String <B>IDLEPREFIX</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.IDLEPREFIX">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="TIMERPREFIX"><!-- --></A><H3>
+TIMERPREFIX</H3>
+<PRE>
+public static final java.lang.String <B>TIMERPREFIX</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.TIMERPREFIX">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="PROMPT"><!-- --></A><H3>
+PROMPT</H3>
+<PRE>
+public final java.lang.String <B>PROMPT</B></PRE>
+<DL>
+<DD>The prompt for the <code>readEvalPrint</code> loop.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.PROMPT">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="PROMPT2"><!-- --></A><H3>
+PROMPT2</H3>
+<PRE>
+public final java.lang.String <B>PROMPT2</B></PRE>
+<DL>
+<DD>The prompt for continued lines in the <code>readEvalPrint</code> loop.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#org.hecl.Interp.PROMPT2">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="cacheversion"><!-- --></A><H3>
+cacheversion</H3>
+<PRE>
+public long <B>cacheversion</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="commands"><!-- --></A><H3>
+commands</H3>
+<PRE>
+protected java.util.Hashtable <B>commands</B></PRE>
+<DL>
+<DD>The <code>commands</code> <code>Hashtable</code> provides the
+ mapping from the strings containing command names to the code
+ implementing the commands.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="auxdata"><!-- --></A><H3>
+auxdata</H3>
+<PRE>
+protected java.util.Hashtable <B>auxdata</B></PRE>
+<DL>
+<DD>The <code>auxdata</code> <code>Hashtable</code> is a place to
+ store extra information about the state of the program.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="stack"><!-- --></A><H3>
+stack</H3>
+<PRE>
+protected java.util.Stack <B>stack</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="error"><!-- --></A><H3>
+error</H3>
+<PRE>
+protected java.util.Stack <B>error</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="timers"><!-- --></A><H3>
+timers</H3>
+<PRE>
+protected java.util.Vector <B>timers</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="asyncs"><!-- --></A><H3>
+asyncs</H3>
+<PRE>
+protected java.util.Vector <B>asyncs</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="idle"><!-- --></A><H3>
+idle</H3>
+<PRE>
+protected java.util.Vector <B>idle</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="waittokens"><!-- --></A><H3>
+waittokens</H3>
+<PRE>
+protected java.util.Hashtable <B>waittokens</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="idlegeneration"><!-- --></A><H3>
+idlegeneration</H3>
+<PRE>
+protected long <B>idlegeneration</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="running"><!-- --></A><H3>
+running</H3>
+<PRE>
+protected boolean <B>running</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="maxblocktime"><!-- --></A><H3>
+maxblocktime</H3>
+<PRE>
+protected long <B>maxblocktime</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="ci"><!-- --></A><H3>
+ci</H3>
+<PRE>
+protected java.util.Vector <B>ci</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="classcmdcache"><!-- --></A><H3>
+classcmdcache</H3>
+<PRE>
+protected java.util.Hashtable <B>classcmdcache</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="eol"><!-- --></A><H3>
+eol</H3>
+<PRE>
+public static final char[] <B>eol</B></PRE>
+<DL>
+<DD><code>eol</code> is the end-of-line character or characters.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="fileseparator"><!-- --></A><H3>
+fileseparator</H3>
+<PRE>
+public static final java.lang.String <B>fileseparator</B></PRE>
+<DL>
+<DD><code>fileseparator</code> is the file separator, such as "/".
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="currentFile"><!-- --></A><H3>
+currentFile</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>currentFile</B></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="Interp()"><!-- --></A><H3>
+Interp</H3>
+<PRE>
+public <B>Interp</B>()
+       throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD>Creates a new <code>Interp</code> instance, initializing command and
+ variable hashtables, a stack, and an error stack.
+<P>
+<DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="hashKeysToArray(java.util.Hashtable)"><!-- --></A><H3>
+hashKeysToArray</H3>
+<PRE>
+protected java.lang.String[] <B>hashKeysToArray</B>(java.util.Hashtable&nbsp;h)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hashKeysToArray(java.util.Hashtable, java.lang.String)"><!-- --></A><H3>
+hashKeysToArray</H3>
+<PRE>
+protected java.lang.String[] <B>hashKeysToArray</B>(java.util.Hashtable&nbsp;h,
+                                             java.lang.String&nbsp;prefix)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="readEvalPrint(java.io.InputStream, java.io.PrintStream, java.io.PrintStream)"><!-- --></A><H3>
+readEvalPrint</H3>
+<PRE>
+public void <B>readEvalPrint</B>(java.io.InputStream&nbsp;in,
+                          java.io.PrintStream&nbsp;out,
+                          java.io.PrintStream&nbsp;err)</PRE>
+<DL>
+<DD>The <code>commandLine</code> method implements a
+ Read/Eval/Print Loop.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>in</CODE> - Input stream to read input from.<DD><CODE>out</CODE> - Output stream to print results to.<DD><CODE>err</CODE> - Output stream for error messages.
+
+ This function never returns.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addClassCmd(java.lang.Class, org.hecl.ClassCommand)"><!-- --></A><H3>
+addClassCmd</H3>
+<PRE>
+public void <B>addClassCmd</B>(java.lang.Class&nbsp;clazz,
+                        <A HREF="../../org/hecl/ClassCommand.html" title="interface in org.hecl">ClassCommand</A>&nbsp;cmd)</PRE>
+<DL>
+<DD>Add a new class command to an <code>Interp</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>clazz</CODE> - The Java class the command should operate on.<DD><CODE>cmd</CODE> - The command to add. When this paramter is <code>null</code>,
+ an existing command is removed.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeClassCmd(java.lang.Class)"><!-- --></A><H3>
+removeClassCmd</H3>
+<PRE>
+public void <B>removeClassCmd</B>(java.lang.Class&nbsp;clazz)</PRE>
+<DL>
+<DD>Remove a command for a specific class from an <code>Interp</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>clazz</CODE> - The class to remove the command for.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addCommand(java.lang.String, org.hecl.Command)"><!-- --></A><H3>
+addCommand</H3>
+<PRE>
+public java.lang.String <B>addCommand</B>(java.lang.String&nbsp;name,
+                                   <A HREF="../../org/hecl/Command.html" title="interface in org.hecl">Command</A>&nbsp;c)</PRE>
+<DL>
+<DD>Add a new command to an <code>Interp</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - the name of the command to add.<DD><CODE>c</CODE> - the command to add.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeCommand(java.lang.String)"><!-- --></A><H3>
+removeCommand</H3>
+<PRE>
+public void <B>removeCommand</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD>Remove a command from an <code>Interp</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - the name of the command to add.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="commandExists(java.lang.String)"><!-- --></A><H3>
+commandExists</H3>
+<PRE>
+public boolean <B>commandExists</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD>The <code>commandExists</code> method returns true if a command
+ exists, otherwise false.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - a <code>String</code> value
+<DT><B>Returns:</B><DD>a <code>boolean</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setAuxData(java.lang.String, java.lang.Object)"><!-- --></A><H3>
+setAuxData</H3>
+<PRE>
+public void <B>setAuxData</B>(java.lang.String&nbsp;key,
+                       java.lang.Object&nbsp;value)</PRE>
+<DL>
+<DD>Attach auxiliary data to an <code>Interp</code>.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getAuxData(java.lang.String)"><!-- --></A><H3>
+getAuxData</H3>
+<PRE>
+public java.lang.Object <B>getAuxData</B>(java.lang.String&nbsp;key)</PRE>
+<DL>
+<DD>Retrieve auxiliary data from an <code>Interp</code>.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a <code>Object</code> value or <code>null</code> when no
+ auxiliary data under the given key is attached to the interpreter.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeAuxData(java.lang.String)"><!-- --></A><H3>
+removeAuxData</H3>
+<PRE>
+public void <B>removeAuxData</B>(java.lang.String&nbsp;key)</PRE>
+<DL>
+<DD>Remove auxiliary data from an <code>Interp</code>.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="eval(org.hecl.Thing)"><!-- --></A><H3>
+eval</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>eval</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in)
+           throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD>The <code>eval</code> method evaluates some Hecl code passed to
+ it.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a <code>Thing</code> value - the result of the
+ evaluation.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="evalIdle(org.hecl.Thing)"><!-- --></A><H3>
+evalIdle</H3>
+<PRE>
+public <A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A> <B>evalIdle</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;idleThing)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="evalAsync(org.hecl.Thing)"><!-- --></A><H3>
+evalAsync</H3>
+<PRE>
+public <A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A> <B>evalAsync</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;asyncThing)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="evalAsyncAndWait(org.hecl.Thing)"><!-- --></A><H3>
+evalAsyncAndWait</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>evalAsyncAndWait</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in)
+                       throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="eval(org.hecl.Thing, int)"><!-- --></A><H3>
+eval</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>eval</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;in,
+                  int&nbsp;level)
+           throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD>This version of <code>eval</code> takes a 'level' argument that
+ tells Hecl what level to run the code at.  Level 0 means
+ global, negative numbers indicate relative levels down from the
+ current stackframe, and positive numbers mean absolute stack
+ frames counting up from 0.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>in</CODE> - a <code>Thing</code> value<DD><CODE>level</CODE> - an <code>int</code> value
+<DT><B>Returns:</B><DD>a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasIdleTasks()"><!-- --></A><H3>
+hasIdleTasks</H3>
+<PRE>
+public boolean <B>hasIdleTasks</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getEvent(java.lang.String)"><!-- --></A><H3>
+getEvent</H3>
+<PRE>
+public <A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A> <B>getEvent</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getAllEvents()"><!-- --></A><H3>
+getAllEvents</H3>
+<PRE>
+public java.util.Vector <B>getAllEvents</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addTimer(org.hecl.Thing, int)"><!-- --></A><H3>
+addTimer</H3>
+<PRE>
+public <A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A> <B>addTimer</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;timerThing,
+                         int&nbsp;millisecs)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancelTimer(java.lang.String)"><!-- --></A><H3>
+cancelTimer</H3>
+<PRE>
+public void <B>cancelTimer</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancelIdle(java.lang.String)"><!-- --></A><H3>
+cancelIdle</H3>
+<PRE>
+public void <B>cancelIdle</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancelAsync(java.lang.String)"><!-- --></A><H3>
+cancelAsync</H3>
+<PRE>
+public void <B>cancelAsync</B>(java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancelIdle(org.hecl.HeclTask)"><!-- --></A><H3>
+cancelIdle</H3>
+<PRE>
+public void <B>cancelIdle</B>(<A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A>&nbsp;idletask)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="doOneEvent(int)"><!-- --></A><H3>
+doOneEvent</H3>
+<PRE>
+public boolean <B>doOneEvent</B>(int&nbsp;flags)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="waitForToken(java.lang.String)"><!-- --></A><H3>
+waitForToken</H3>
+<PRE>
+public void <B>waitForToken</B>(java.lang.String&nbsp;tokenname)
+                  throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="notifyToken(java.lang.String)"><!-- --></A><H3>
+notifyToken</H3>
+<PRE>
+public void <B>notifyToken</B>(java.lang.String&nbsp;tokenname)
+                 throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="terminate()"><!-- --></A><H3>
+terminate</H3>
+<PRE>
+public void <B>terminate</B>()</PRE>
+<DL>
+<DD>The <code>terminate</code> method terminates the Hecl
+ interpreter thread in a graceful manner. The thread will
+ eventually finish its run-method.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="run()"><!-- --></A><H3>
+run</H3>
+<PRE>
+public void <B>run</B>()</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>run</CODE> in interface <CODE>java.lang.Runnable</CODE><DT><B>Overrides:</B><DD><CODE>run</CODE> in class <CODE>java.lang.Thread</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cmdRename(java.lang.String, java.lang.String)"><!-- --></A><H3>
+cmdRename</H3>
+<PRE>
+public void <B>cmdRename</B>(java.lang.String&nbsp;oldname,
+                      java.lang.String&nbsp;newname)
+               throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD>The <code>cmdRename</code> method renames a command, or throws
+ an error if the original command didn't exist.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>oldname</CODE> - a <code>String</code> value<DD><CODE>newname</CODE> - a <code>String</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cmdAlias(java.lang.String, java.lang.String)"><!-- --></A><H3>
+cmdAlias</H3>
+<PRE>
+public void <B>cmdAlias</B>(java.lang.String&nbsp;oldname,
+                     java.lang.String&nbsp;newname)
+              throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="stackIncr()"><!-- --></A><H3>
+stackIncr</H3>
+<PRE>
+public void <B>stackIncr</B>()</PRE>
+<DL>
+<DD>The <code>stackIncr</code> method creates a new stack frame. Used in
+ the Proc class.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="stackDecr()"><!-- --></A><H3>
+stackDecr</H3>
+<PRE>
+public java.util.Hashtable <B>stackDecr</B>()</PRE>
+<DL>
+<DD><code>stackDecr</code> pops the stack frame, returning it so that
+ commands like upeval can save it. If it's not saved, it's gone.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="stackPush(java.util.Hashtable)"><!-- --></A><H3>
+stackPush</H3>
+<PRE>
+public void <B>stackPush</B>(java.util.Hashtable&nbsp;vars)</PRE>
+<DL>
+<DD><code>stackDecr</code> pushes a new variable hashtable
+ (probably saved via upeval) onto the stack frame.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVar(org.hecl.Thing)"><!-- --></A><H3>
+getVar</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>getVar</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)
+             throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>getVar</code> returns the value of a variable given its name.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>Thing</code> value
+<DT><B>Returns:</B><DD>a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVar(java.lang.String)"><!-- --></A><H3>
+getVar</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>getVar</B>(java.lang.String&nbsp;varname)
+             throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>getVar</code> returns the value of a variable given its name.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value
+<DT><B>Returns:</B><DD>a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVar(java.lang.String, int)"><!-- --></A><H3>
+getVar</H3>
+<PRE>
+public <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A> <B>getVar</B>(java.lang.String&nbsp;varname,
+                    int&nbsp;level)
+             throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>getVar</code> returns the value of a variable given its name and
+ level.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value<DD><CODE>level</CODE> - an <code>int</code> value
+<DT><B>Returns:</B><DD>a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setVar(org.hecl.Thing, org.hecl.Thing)"><!-- --></A><H3>
+setVar</H3>
+<PRE>
+public void <B>setVar</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname,
+                   <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value)
+            throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>setVar</code> sets a variable in the innermost variable stack
+ frame to a value.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>Thing</code> value<DD><CODE>value</CODE> - a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setVar(java.lang.String, org.hecl.Thing)"><!-- --></A><H3>
+setVar</H3>
+<PRE>
+public void <B>setVar</B>(java.lang.String&nbsp;varname,
+                   <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value)</PRE>
+<DL>
+<DD><code>setVar</code> sets a variable in the innermost variable stack
+ frame to a value.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value<DD><CODE>value</CODE> - a <code>Thing</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setVar(java.lang.String, org.hecl.Thing, int)"><!-- --></A><H3>
+setVar</H3>
+<PRE>
+public void <B>setVar</B>(java.lang.String&nbsp;varname,
+                   <A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;value,
+                   int&nbsp;level)</PRE>
+<DL>
+<DD><code>setVar</code> sets a variable to a value in the variable stack
+ frame specified by <code>level</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value<DD><CODE>value</CODE> - a <code>Thing</code> value<DD><CODE>level</CODE> - an <code>int</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="unSetVar(org.hecl.Thing)"><!-- --></A><H3>
+unSetVar</H3>
+<PRE>
+public void <B>unSetVar</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)
+              throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>unSetVar</code> unsets a variable in the current stack
+ frame.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>Thing</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="unSetVar(java.lang.String)"><!-- --></A><H3>
+unSetVar</H3>
+<PRE>
+public void <B>unSetVar</B>(java.lang.String&nbsp;varname)
+              throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="unSetVar(java.lang.String, int)"><!-- --></A><H3>
+unSetVar</H3>
+<PRE>
+public void <B>unSetVar</B>(java.lang.String&nbsp;varname,
+                     int&nbsp;level)
+              throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="existsVar(org.hecl.Thing)"><!-- --></A><H3>
+existsVar</H3>
+<PRE>
+public boolean <B>existsVar</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;varname)
+                  throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the current variable stack frame, <code>false</code>
+ if it does not.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>Thing</code> value
+<DT><B>Returns:</B><DD>a <code>boolean</code> value
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="existsVar(java.lang.String)"><!-- --></A><H3>
+existsVar</H3>
+<PRE>
+public boolean <B>existsVar</B>(java.lang.String&nbsp;varname)</PRE>
+<DL>
+<DD><code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the current variable stack frame, <code>false</code>
+ if it does not.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value
+<DT><B>Returns:</B><DD>a <code>boolean</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="existsVar(java.lang.String, int)"><!-- --></A><H3>
+existsVar</H3>
+<PRE>
+public boolean <B>existsVar</B>(java.lang.String&nbsp;varname,
+                         int&nbsp;level)</PRE>
+<DL>
+<DD><code>existsVar</code> returns <code>true</code> if the given
+ variable exists in the variable stack frame given by <code>level</code>,
+ <code>false</code> if it does not.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>varname</CODE> - a <code>String</code> value<DD><CODE>level</CODE> - an <code>int</code> value
+<DT><B>Returns:</B><DD>a <code>boolean</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addError(org.hecl.Thing)"><!-- --></A><H3>
+addError</H3>
+<PRE>
+public void <B>addError</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>&nbsp;err)</PRE>
+<DL>
+<DD><code>addError</code> adds a Thing as an error message.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>err</CODE> - a <code>Thing</code> value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="clearError()"><!-- --></A><H3>
+clearError</H3>
+<PRE>
+public void <B>clearError</B>()</PRE>
+<DL>
+<DD><code>clearError</code> clears the error stack.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="checkArgCount(org.hecl.Thing[], int, int)"><!-- --></A><H3>
+checkArgCount</H3>
+<PRE>
+public static void <B>checkArgCount</B>(<A HREF="../../org/hecl/Thing.html" title="class in org.hecl">Thing</A>[]&nbsp;argv,
+                                 int&nbsp;minargs,
+                                 int&nbsp;maxargs)
+                          throws <A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></PRE>
+<DL>
+<DD><code>checkArgCount</code> checks to see whether the command
+ actually has the required number of arguments. The first element of the
+ parameter array <code>argv</code> is not counted as argument!
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>argv</CODE> - A <code>Thing[]</code> parameter array.<DD><CODE>minargs</CODE> - The minimal number of arguments or -1 if no check is required.<DD><CODE>maxargs</CODE> - The maximal number of arguments or -1 if no check is required.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../org/hecl/HeclException.html" title="class in org.hecl">HeclException</A></CODE> - if an error occurs</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="nextTask(java.util.Vector, long)"><!-- --></A><H3>
+nextTask</H3>
+<PRE>
+protected <A HREF="../../org/hecl/HeclTask.html" title="class in org.hecl">HeclTask</A> <B>nextTask</B>(java.util.Vector&nbsp;v,
+                            long&nbsp;until)</PRE>
+<DL>
+<DD><code>nextTask</code> extracts first element from given vector.
+ This function operates in a synchronized manner on the argument
+ <code>v</code>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>v</CODE> - A <code>Vector</code> of tasks.<DD><CODE>until</CODE> - A value to compare the result of
+ <code>getGeneration</code> of the <code>HeclTask</code>. If
+ <code>until</code> is less than 0 or <code>getGeneration</code>
+ is less than <code>until</code> for the first element of
+ <code>v</code>, the first task in the vector is returned, null
+ otherwise.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="serviceIdleTask()"><!-- --></A><H3>
+serviceIdleTask</H3>
+<PRE>
+protected boolean <B>serviceIdleTask</B>()</PRE>
+<DL>
+<DD>Service at most one idle task of the idle task queue.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a <code>boolean</code> indicatign that an idle task has been
+ serviced (=true) or not (=false).</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="backgroundError(java.lang.String)"><!-- --></A><H3>
+backgroundError</H3>
+<PRE>
+public void <B>backgroundError</B>(java.lang.String&nbsp;errorMessage)</PRE>
+<DL>
+<DD>The <code>backgroundError</code> method can be called to
+ dispatch a bgerror command.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>errorMessage</CODE> - a <code>String</code> value</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Interp.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../org/hecl/IntegralThing.html" title="class in org.hecl"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../org/hecl/Interp.WaitToken.html" title="class in org.hecl"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../index.html?org/hecl/Interp.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="Interp.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+
+</BODY>
+</HTML>

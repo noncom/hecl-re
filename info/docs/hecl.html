@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>
+      
+	Hecl Programming Language
+      
+    </title><link rel="stylesheet" href="hecl.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /></head><body><div class="article" lang="en" xml:lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="id4745316"></a>
+      <a href="http://www.hecl.org/" target="_top">
+	Hecl Programming Language
+      </a>
+    </h1></div><div><div class="author"><h3 class="author"><span class="firstname">David</span> <span class="surname">Welton</span></h3><div class="affiliation"><span class="orgname">DedaSys<br /></span><div class="address"><p><br />
+	  <code class="email">&lt;<a href="mailto:davidw@dedasys.com">davidw@dedasys.com</a>&gt;</code><br />
+	</p></div></div></div></div><div><p class="copyright">Copyright © 2004, 2005 
+	David N. Welton
+      </p></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#id4733490">Introduction</a></span></dt><dt><span class="section"><a href="#installation">Installation</a></span></dt><dt><span class="section"><a href="#tutorial">Hecl Tutorial</a></span></dt><dt><span class="section"><a href="#commands">Hecl Commands</a></span></dt><dt><span class="section"><a href="#heclandjava">Interfacing Hecl and Java</a></span></dt><dd><dl><dt><span class="section"><a href="#id4748652">Calling Hecl code from Java</a></span></dt><dt><span class="section"><a href="#id4748748">Creating new Hecl commands</a></span></dt><dt><span class="section"><a href="#id4749032">JavaDocs</a></span></dt></dl></dd><dt><span class="section"><a href="#j2me">Hecl and J2ME</a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id4733490"></a>Introduction</h2></div></div></div><p>
+      The Hecl Programming Language is a high-level scripting language
+      implemented in Java.  It is intended to be small, extensible,
+      extremely flexible, and easy to learn and use.
+    </p><p>
+      Why Hecl?  Hecl is intended as a complement to the Java
+      programming language, not a replacement.  It tries to do well
+      what Java doesn't, and leaves those tasks to Java for which it
+      is best suited, by providing an API that makes it easy to tie
+      the two together.  Hecl aims to be a very immediate language -
+      you can pick it up and start doing useful things with it quickly
+      - even people without formal training.  Hecl is easy to learn.
+      Where Java is verbose and rigid, Hecl is forgiving and quick to
+      write.  For instance,
+      <strong class="userinput"><code>System.out.println("Hello World");</code></strong>
+      vs <strong class="userinput"><code>puts "Hello World"</code></strong> - 41
+      keystrokes (shifted letters count double) versus 22.  Hecl is
+      built to <a href="http://www.dedasys.com/articles/scalable_systems.html" target="_top">"scale
+      down"</a> - especially in terms of its users, meaning that
+      it is very quick to learn, and can be quickly put to productive
+      use even by those who are not programmers by trade.
+    </p><p>
+      This makes Hecl ideal for large applications written in Java
+      that would like to provide a user friendly scripting interface,
+      rather than, say, a clunky XML based system.  Examples include:
+      scripted web pages, command/control logic in long running
+      applications, and, I'm sure, many environments I've never
+      considered.  Instead of a simple, static configuration file, you
+      can give your users the power to program portions of the system
+      to do things that you hadn't thought of when you wrote the
+      software originally.
+    </p><p>
+      Hecl is a small language with a minimal core.  The idea is to
+      provide only what's necessary in the language itself, and as
+      needed, add in extensions for specific tasks.  Core Hecl is
+      small enough to run on my Nokia 3100 cell phone as a J2ME
+      application, presenting the interesting possibility of writing
+      scripts, or at some point, maybe even scripting entire
+      applications, for devices running embedded Java.
+    </p><p>
+      Contributions in the form of code, ideas, suggestions, or even
+      donations are welcome.  Hecl is still growing, so your thoughts
+      are important, and you can help shape the language's future.
+      You can download the code via CVS from the SourceForge project
+      page: <a href="" target="_top"></a>.
+    </p><p>
+      Hecl is available under the liberal Apache 2.0 open source
+      license.  Which says, more or less, that you may use Hecl in
+      your own applications, even if they are not open source.  You
+      have to give me credit, though.  Read the license itself to
+      clear up any doubts.  Oh, and incidentally, I don't see the
+      license as being incompatible with the GPL, so feel free to
+      utilize Hecl in your GPL product (I have added a note to this
+      effect in the NOTICE file that must accompany products using the
+      Hecl code).
+    </p><p>
+      I owe thanks to a lot of people for Hecl.  First and foremost
+      the creator of the Tcl programming language, Dr. John
+      Ousterhout.  While I have attempted to improve some things that
+      I did not care for in Tcl, it is obvious that the simple,
+      extremely flexible command-based approach that Hecl takes is
+      derived from Tcl.  I also borrowed some ideas from the (mostly
+      defunct) Jacl implementation of Tcl in Java.  Many thanks are
+      also due my friend Salvatore Sanfilippo, with whom I have spent
+      many hours discussing Hecl, Tcl, and the philosophy of
+      programming languages in general.  And of course, I owe a huge
+      debt of gratitude to my fianceè, Ilenia, who puts up with
+      all the hours I spend in front of "that damn computer".
+    </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="installation"></a>Installation</h2></div></div></div><p>Hecl is easy to compile and install as a standard J2SE application.</p><div class="procedure"><ol type="1"><li>
+	Hecl uses the <a href="#">Apache
+	Ant</a> build system, so you need to install that to
+	compile Hecl.
+      </li><li>
+	To compile the standard, J2SE version of Hecl, do this:
+	<pre class="screen">
+ant packageCommandline
+</pre></li><li>
+	You should now have a Hecl.jar file.  To run it, do this:
+	<pre class="screen">
+java -jar Hecl.jar Hecl
+hecl&gt; puts "hello world"
+hello world
+</pre></li><li>
+	If you wish, you can compile Hecl to native code with GCJ:
+	<pre class="screen">
+gcj -o hecl --main=Hecl Hecl.jar
+davidw@medford:~/workshop/hecl$ ./hecl
+hecl&gt; puts "hello world"
+hello world
+	</pre></li><li>
+	If you want to check your installation of Hecl, you can run
+	the test suite to make sure everything checks out:
+	<pre class="screen">
+java -classpath Hecl.jar Hecl tests/suite.hcl
+	</pre>
+	A performance test is also supplied so that you can compare
+	numbers if you're curious, or want to hack on Hecl to improve
+	its speed:
+	<pre class="screen">
+java -classpath Hecl.jar Hecl tests/performance.hcl
+	</pre></li></ol></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="tutorial"></a>Hecl Tutorial</h2></div></div></div><p>
+      Like many people, I enjoy taking something and experimenting
+      with it before going and reading the instructions!  With this in
+      mind, I have written a brief tutorial that you can use to start
+      exploring Hecl on your own.
+    </p><p>
+      Of course, we would be out of place not to begin with the famous
+      "Hello, World".  Behold:
+    </p><pre class="programlisting">puts "Hello, World"</pre><p>
+      Hecl is based on the notion of commands, which take any number
+      of arguments.  The <span><strong class="command">puts</strong></span> command takes one
+      argument, a string, and prints it out.
+    </p><p>
+      Like all programming languages, Hecl provides variables that may
+      be used to store information. Here, we set a variable,
+      <code class="varname">rating</code>, and then print it out in the midst of
+      a string.  This is called "interpolation", and is a convenient
+      way of creating new strings.
+    </p><pre class="programlisting">set rating 10
+puts "Hecl, from 1 to 10: $rating"</pre><p>
+      Something else we notice in the above examples is that we use
+      double quotes "" to group a series of things.  In Hecl, commands
+      and their arguments are separated by spaces.  Since
+      <span><strong class="command">puts</strong></span> only takes one argument, a string, we
+      use the quotes to group several words together in order to pass
+      them as one string to the command.  Many languages require
+      quotes to delineate a string, but in Hecl that is not necessary
+      if the string has no spaces in it.  For instance,
+      <strong class="userinput"><code>puts helloworld</code></strong> is legitimate.
+    </p><p>
+      Another way of grouping multiple words in Hecl is with braces:
+      {}.  Hecl does not automatically perform any substitution on the
+      variables or commands grouped within braces, as it does with
+      quotes.
+    </p><pre class="programlisting">puts {The $dollar $signs $are printed	    literally$$ - no substitution}</pre><p>
+      Aside from the dollar sign, which returns a copy of the value of
+      a variable, it is also possible to utilize the results of one
+      command as the input of a second command.  For example:
+    </p><pre class="programlisting">set rating 10
+puts "Rating:"
+puts [set rating]</pre><p>
+      In this case, we pass the results of the <span><strong class="command">set</strong></span>
+      command to the <span><strong class="command">puts</strong></span> command.  In reality, <strong class="userinput"><code>set
+	rating</code></strong> is just a long way of writing
+      <code class="option">$rating</code> but it's a good example.
+    </p><p>
+      Like everything else in Hecl, we perform math operations as
+      commands:
+    </p><pre class="programlisting">puts "2 + 2 = [+ 2 2]"</pre><p>
+      In the example, the <span><strong class="command">+</strong></span> takes two arguments,
+      adds them together and return the result, which is then printed
+      out by the <span><strong class="command">puts </strong></span> command.
+    </p><p>
+      In order to choose between one or more 
+    </p><pre class="programlisting">set temp 10
+if { &lt; $temp 0 } {
+    puts "It's freezing"
+} else {
+    puts "Not freezing"
+}</pre><p>References:</p><pre class="programlisting">set a 1
+set b &amp;a
+puts $b
+# Returns '1'
+set a 2
+puts $b
+# Returns '2'</pre><p>"while" loop command:</p><pre class="programlisting">set i 0
+while { &lt; &amp;i 10 } {
+    puts "i is now $i"
+    incr &amp;i
+}
+</pre><p>Lists:</p><pre class="programlisting">set foo [list a b c]
+set bar {a b c}
+lappend &amp;foo d
+lappend &amp;bar d
+set foo
+# Returns 'a b c d'
+set bar
+# Returns 'a b c d'
+</pre><p>Hash tables:</p><pre class="programlisting">set foo [hash {a b c d}]
+puts [hget &amp;foo a]
+# prints 'b'
+puts [hget &amp;foo c]
+# prints 'd'
+hset &amp;foo c 2
+puts [hget &amp;foo c]
+# prints '2'
+puts $foo
+# prints 'a b c 2' (although not necessarily in that order)
+</pre><p>"foreach" loop command:</p><pre class="programlisting">set lst {a b c d e f}
+foreach {m n} $lst {
+    puts  "It is possible to grab two variables at a time: $m $n"
+}
+
+foreach {x} $lst {
+    puts  "Or one at a time: $x"
+}</pre><p>
+      Create new commands with the "proc" command.  In this example we
+      create a command that prints out a numbered list.
+    </p><pre class="programlisting">set list {red blue green}
+proc printvals {vals} {
+    set num 1
+    foreach v $vals {
+	puts "$num - $v"
+	incr &amp;num
+    }
+}
+
+printvals &amp;list</pre><p>
+      Hecl is very flexible - in this example, we create a
+      "do...while" loop command that works as if it were a native loop
+      construct.
+    </p><pre class="programlisting">proc do {code while condition} {
+    upeval $code
+    while { upeval &amp;condition } {
+	upeval $code
+    }
+}
+
+set x 100
+set foo ""
+do {
+    append &amp;foo $x
+    incr &amp;x
+} while { &lt; &amp;x 10 }
+set foo
+# Returns 100 - because the loop is run once and only once.
+</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="commands"></a>Hecl Commands</h2></div></div></div><div class="toc"><dl><dt><span class="refentrytitle"><a href="#math">+ - * /</a></span><span class="refpurpose"> - Basic math commands.</span></dt><dt><span class="refentrytitle"><a href="#append">append</a></span><span class="refpurpose"> - Append text to a variable.</span></dt><dt><span class="refentrytitle"><a href="#break">break</a></span><span class="refpurpose"> - Break out of a loop.</span></dt><dt><span class="refentrytitle"><a href="#catch">catch</a></span><span class="refpurpose"> - 
+	  Evaluates a script, catching any errors.
+	</span></dt><dt><span class="refentrytitle"><a href="#continue">continue</a></span><span class="refpurpose"> - Skip to next cycle of a loop</span></dt><dt><span class="refentrytitle"><a href="#eq">eq</a></span><span class="refpurpose"> - Tests string equivalence.</span></dt><dt><span class="refentrytitle"><a href="#eval">eval</a></span><span class="refpurpose"> - Evaluate Hecl code.</span></dt><dt><span class="refentrytitle"><a href="#filter">filter</a></span><span class="refpurpose"> - Filter a list.</span></dt><dt><span class="refentrytitle"><a href="#for">for</a></span><span class="refpurpose"> - For loop.</span></dt><dt><span class="refentrytitle"><a href="#foreach">foreach</a></span><span class="refpurpose"> - Iterate over elements in a list.</span></dt><dt><span class="refentrytitle"><a href="#global">global</a></span><span class="refpurpose"> - Use global variable from within a proc.</span></dt><dt><span class="refentrytitle"><a href="#hash">hash</a></span><span class="refpurpose"> - Create and manipulate hash tables.</span></dt><dt><span class="refentrytitle"><a href="#if">if</a></span><span class="refpurpose"> - Conditionally execute code.</span></dt><dt><span class="refentrytitle"><a href="#incr">incr</a></span><span class="refpurpose"> - Increment a variable.</span></dt><dt><span class="refentrytitle"><a href="#intro">intro</a></span><span class="refpurpose"> - Introspection command.</span></dt><dt><span class="refentrytitle"><a href="#join">join</a></span><span class="refpurpose"> - Join elements of a list to create a string.</span></dt><dt><span class="refentrytitle"><a href="#lappend">lappend</a></span><span class="refpurpose"> - Append an element to a list.</span></dt><dt><span class="refentrytitle"><a href="#lindex">lindex</a></span><span class="refpurpose"> - Return the Nth element of a list</span></dt><dt><span class="refentrytitle"><a href="#list">list</a></span><span class="refpurpose"> - Create a list</span></dt><dt><span class="refentrytitle"><a href="#llen">llen</a></span><span class="refpurpose"> - List length.</span></dt><dt><span class="refentrytitle"><a href="#lset">lset</a></span><span class="refpurpose"> - Set list elements.</span></dt><dt><span class="refentrytitle"><a href="#proc">proc</a></span><span class="refpurpose"> - Create a new procedure.</span></dt><dt><span class="refentrytitle"><a href="#puts">puts</a></span><span class="refpurpose"> - Print text.</span></dt><dt><span class="refentrytitle"><a href="#return">return</a></span><span class="refpurpose"> - Returns a value from a procedure.</span></dt><dt><span class="refentrytitle"><a href="#search">search</a></span><span class="refpurpose"> - Find the first instance of something in a list.</span></dt><dt><span class="refentrytitle"><a href="#set">set</a></span><span class="refpurpose"> - Set a variable.</span></dt><dt><span class="refentrytitle"><a href="#sindex">sindex</a></span><span class="refpurpose"> - Return the index'th character of string.</span></dt><dt><span class="refentrytitle"><a href="#slen">slen</a></span><span class="refpurpose"> - String length.</span></dt><dt><span class="refentrytitle"><a href="#sort">sort</a></span><span class="refpurpose"> - Sorts list alphabetically.</span></dt><dt><span class="refentrytitle"><a href="#source">source</a></span><span class="refpurpose"> - Evaluate Hecl script in a file.</span></dt><dt><span class="refentrytitle"><a href="#split">split</a></span><span class="refpurpose"> - Split a string into a list.</span></dt><dt><span class="refentrytitle"><a href="#time">time</a></span><span class="refpurpose"> - Time the execution of a script.</span></dt><dt><span class="refentrytitle"><a href="#true">true</a></span><span class="refpurpose"> - Returns true.</span></dt><dt><span class="refentrytitle"><a href="#upeval">upeval</a></span><span class="refpurpose"> - Evaluate script in next stack frame up.</span></dt><dt><span class="refentrytitle"><a href="#while">while</a></span><span class="refpurpose"> - While loop.</span></dt></dl></div><div class="refentry" lang="en" xml:lang="en"><a id="math"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>+ - * / — Basic math commands.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">+</code>  <em class="replaceable"><code>number</code></em> <em class="replaceable"><code>number</code></em><br /><code class="command">-</code>  <em class="replaceable"><code>number</code></em> <em class="replaceable"><code>number</code></em><br /><code class="command">*</code>  <em class="replaceable"><code>number</code></em> <em class="replaceable"><code>number</code></em><br /><code class="command">/</code>  <em class="replaceable"><code>number</code></em> <em class="replaceable"><code>number</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4686930"></a><h2>Description</h2><p>
+	  The basic math commands take two arguments and carry out a
+	  numerical operation on them.  In subtraction, the second
+	  argument is taken from the first.  In division, the first
+	  argument is divided by the second.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4686943"></a><h2>Example</h2><pre class="programlisting">
+puts [+ 2 2]
+puts [- 10 1]
+puts [* 6 7]
+puts [/ 100 5]
+	  </pre><p>Produces:</p><pre class="screen">2
+9
+42
+20</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="append"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>append — Append text to a variable.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">append</code>  <em class="replaceable"><code>varreference</code></em> <em class="replaceable"><code>string</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689623"></a><h2>Description</h2><p>
+	  The append command takes two arguments, a variable reference, and a string to append to the variable.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689635"></a><h2>Example</h2><pre class="programlisting">
+set foo "bar"
+append &amp;foo "beebop"
+# The foo variable now contains the string barbeebop
+	  </pre><p>Produces:</p><pre class="screen">barbeebop</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="break"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>break — Break out of a loop.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">break</code> </p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689694"></a><h2>Description</h2><p>
+	  The break command breaks out of a loop.  If this command is
+	  not run from within a loop - the <span><strong class="command">while</strong></span> or
+	  <span><strong class="command">foreach</strong></span> commands for instance, it
+	  generates an error.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689719"></a><h2>Example</h2><pre class="programlisting">
+set i 0
+while { true } {
+    if { &gt; $i 100 } {
+        break
+    }
+    incr &amp;i
+}
+	  </pre><p>
+	  In what would otherwise be an endless loop, the break
+	  command is used to exit.
+	</p></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="catch"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>catch — 
+	  Evaluates a script, catching any errors.
+	</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">catch</code>  <em class="replaceable"><code>script</code></em> ?<em class="replaceable"><code>varname</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689791"></a><h2>Description</h2><p>
+	  The catch command evaluates a script, and returns 0 if the
+	  script evaluated successfully.  If there were errors, catch
+	  returns 1.  Optionally, a variable name may be passed to the
+	  command, where the results of the script evaluation will be
+	  placed.  In the case of errors, the stack trace will be
+	  placed in the variable argument.  If the script executes
+	  without problems, the variable will contain the result of
+	  the script execution.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689816"></a><h2>Example</h2><pre class="programlisting">
+catch nosuchcommand foo
+set foo
+	  </pre><p>Produces:</p><pre class="screen">
+	  {ERROR {Command nosuchcommand does not exist}}
+	</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="continue"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>continue — Skip to next cycle of a loop</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">continue</code> </p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4689872"></a><h2>Description</h2><p>
+	  The continue command is used within the bodies of looping
+	  commands such as <span><strong class="command">if</strong></span> and
+	  <span><strong class="command">while</strong></span>.  When <span><strong class="command">continue</strong></span>
+	  is called, execution of the loop body stops and and
+	  execution moves on to the next iteration of the loop.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745504"></a><h2>Example</h2><pre class="programlisting">
+set i 0
+set res {}
+foreach x {a b c d e} {
+    incr &amp;i
+    continue
+    append &amp;res $x
+}
+puts $i
+puts $res
+	</pre><p>Produces:</p><pre class="screen">5</pre><p>
+	  The res variable is never appended to, so printing it out
+	  produces an empty string.
+	</p></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="eq"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>eq — Tests string equivalence.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">eq</code>  <em class="replaceable"><code>string1</code></em> <em class="replaceable"><code>string2</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745579"></a><h2>Description</h2><p>
+	  The <span><strong class="command">eq</strong></span> commands compares two strings,
+	  returning 1 if they are equal, 0 if they are not.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745595"></a><h2>Example</h2><pre class="programlisting">
+if {eq 1 1.0} {
+    puts "True"
+} else {
+    puts "False"
+}
+	  </pre><p>Produces:</p><pre class="screen">False</pre><p>
+	  Despite being numerically equivalent, the strings "1" and
+	  "1.0" are different.
+	</p></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="eval"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>eval — Evaluate Hecl code.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">eval</code>  <em class="replaceable"><code>code</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745658"></a><h2>Description</h2><p>
+	  The <span><strong class="command">eval</strong></span> command takes a string
+	  containing Hecl commands, evaluates them, and returns the
+	  result.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745675"></a><h2>Example</h2><pre class="programlisting">
+set i 0
+set str {incr}
+lappend &amp;str "i"
+eval $str
+puts $i
+	  </pre><p>Produces:</p><pre class="screen">1</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="filter"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>filter — Filter a list.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">filter</code>  <em class="replaceable"><code>list</code></em> <em class="replaceable"><code>varname</code></em> <em class="replaceable"><code>script</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745749"></a><h2>Description</h2><p>
+	  The <span><strong class="command">filter</strong></span> command takes a list and
+	  filters it according to the code provided in
+	  <code class="option"><em class="replaceable"><code>code</code></em></code>.  The
+	  current element of the list being considered is stored in
+	  the <code class="option"><em class="replaceable"><code>varname</code></em></code>
+	  provided.  A list of 'matches' is returned.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745776"></a><h2>Example</h2><pre class="programlisting">
+set lst {1 2 3 4 5 4 3 2 1}
+puts [filter $lst x {= $x 4}]
+	  </pre><p>Produces:</p><pre class="screen">4 4</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="for"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>for — For loop.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">for</code>  <em class="replaceable"><code>initialization</code></em> <em class="replaceable"><code>test</code></em> <em class="replaceable"><code>step</code></em> <em class="replaceable"><code>body</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745863"></a><h2>Description</h2><p>
+	  The <span><strong class="command">for</strong></span> command is like in many other
+	  languages like C and Java.  As arguments, it takes an
+	  <code class="option"><em class="replaceable"><code>initialization</code></em></code>
+	  option, which is often used to set a variable to some
+	  initial value, a
+	  <code class="option"><em class="replaceable"><code>test</code></em></code> to
+	  determine whether to continue running, a
+	  <code class="option"><em class="replaceable"><code>step</code></em></code> script
+	  option which is run at each iteration of the body (to
+	  increment a variable, for example), and the body itself.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4745898"></a><h2>Example</h2><pre class="programlisting">
+set out {}
+for {set i 0} {&lt; $i 10} {incr &amp;i} {
+    append &amp;out $i
+}
+puts $out
+	  </pre><p>Produces:</p><pre class="screen">0123456789</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="foreach"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>foreach — Iterate over elements in a list.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">foreach</code>  <em class="replaceable"><code>varname</code></em> <em class="replaceable"><code>list</code></em> <em class="replaceable"><code>body</code></em><br /><code class="command">foreach</code>  <em class="replaceable"><code>varlist</code></em> <em class="replaceable"><code>list</code></em> <em class="replaceable"><code>body</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746012"></a><h2>Description</h2><p>
+	  The foreach command iterates over a list.  For each element
+	  of the list,
+	  <code class="option"><em class="replaceable"><code>varname</code></em></code> is set
+	  to a new element of the list, and then
+	  <code class="option"><em class="replaceable"><code>body</code></em></code> is run.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746034"></a><h2>Example</h2><pre class="programlisting">
+set lst {a b c d e}
+set res {}
+foreach el $lst {
+    append &amp;res $el
+}
+puts $res
+	  </pre><p>Produces:</p><pre class="screen">abcde</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="global"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>global — Use global variable from within a proc.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">global</code>  <em class="replaceable"><code>varname</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746101"></a><h2>Description</h2><p>
+	  By default, Hecl variables are always local.  Global
+	  variables are not visible from within procedures.  The
+	  <span><strong class="command">global</strong></span> command makes global variable
+	  <code class="option"><em class="replaceable"><code>varname</code></em></code> visible
+	  within a procedure.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746125"></a><h2>Example</h2><pre class="programlisting">
+set foo 1
+proc incfoo {} {
+    global foo
+    incr &amp;foo
+}
+incfoo
+puts $foo
+	  </pre><p>Produces:</p><pre class="screen">2</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="hash"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>hash — Create and manipulate hash tables.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">hash</code>  <em class="replaceable"><code>list</code></em><br /><code class="command">hget</code>  <em class="replaceable"><code>hash</code></em> <em class="replaceable"><code>key</code></em><br /><code class="command">hset</code>  <em class="replaceable"><code>hash</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>value</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746246"></a><h2>Description</h2><p>
+	  The <span><strong class="command">hash</strong></span> command takes an even-numbered
+	  list and creates a hash table from it, using the even
+	  elements as keys, and odd elements as values.  A new hash
+	  table is returned.  The <span><strong class="command">hget</strong></span> and
+	  <span><strong class="command">hset</strong></span> commands operate on hash tables.
+	  Both take a hash table as their first argument.
+	  <span><strong class="command">hget</strong></span> also takes a key, and returns the
+	  corresponding value, or an error if no key by that name
+	  exists.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746286"></a><h2>Example</h2><pre class="programlisting">
+set foo [hash {a b c d}]
+hset &amp;foo a 42
+puts [hget &amp;foo a]
+	  </pre><p>Produces:</p><pre class="screen">42</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="if"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>if — Conditionally execute code.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">if</code>  <em class="replaceable"><code>test</code></em> <em class="replaceable"><code>code</code></em> ?<code class="option">elseif</code> <em class="replaceable"><code>test</code></em> <em class="replaceable"><code>code</code></em>...? ?<code class="option">else</code> <em class="replaceable"><code>code</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746419"></a><h2>Description</h2><p>
+	  The if command executes Hecl code conditionally.  In its
+	  most basic form, it executes a
+	  <code class="option"><em class="replaceable"><code>test</code></em></code>.  If the
+	  results are not 0, then it executes
+	  <code class="option"><em class="replaceable"><code>code</code></em></code>.  If not,
+	  no further actions take place.  <span><strong class="command">if</strong></span> may
+	  take any number of <code class="option">elseif</code> clauses, which
+	  have their own
+	  <code class="option"><em class="replaceable"><code>test</code></em></code> and
+	  <code class="option"><em class="replaceable"><code>code</code></em></code>.  Finally,
+	  if none of the conditions has matched, it is also possible
+	  to supply an <code class="option">else</code> clause that will be
+	  executed if the results of the if and elseif tests were all
+	  false.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746468"></a><h2>Example</h2><pre class="programlisting">
+if { true } {
+    puts "true"
+} else {
+    puts "false"
+}
+	  </pre><p>Produces:</p><pre class="screen">true</pre><pre class="programlisting">
+if { &gt; 0 1 } {
+    puts "true"
+} else {
+    puts "false"
+}
+	  </pre><p>Produces:</p><pre class="screen">false</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="incr"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>incr — Increment a variable.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">incr</code>  <em class="replaceable"><code>varreference</code></em> <em class="replaceable"><code>integer</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746558"></a><h2>Description</h2><p>
+	  The <span><strong class="command">incr</strong></span> command takes a variable
+	  reference, and adds <code class="option"><em class="replaceable"><code>integer to
+	  it</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746580"></a><h2>Example</h2><pre class="programlisting">
+set foo 1
+incr &amp;foo
+puts "foo is $foo"
+incr &amp;foo 10
+puts "foo is now $foo"
+	  </pre><p>Produces:</p><pre class="screen">2
+12</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="intro"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>intro — Introspection command.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">intro</code>  ?commands?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746654"></a><h2>Description</h2><p>
+	  The <span><strong class="command">intro</strong></span> command is used for Hecl
+	  introspection.  It takes a subcommand which causes it to
+	  perform the desired function.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746672"></a><h2>Example</h2><pre class="programlisting">
+ puts [sort [intro commands]]
+	  </pre><p>Produces:</p><pre class="screen">* + - / &lt; = &gt; append break catch continue copy eq eval filter for foreach global hash hget hset if incr intro join lappend lindex list llen lset proc puts ref return search set sindex slen sort source sourcehere split time true upeval while</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="join"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>join — Join elements of a list to create a string.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">join</code>  <em class="replaceable"><code>list</code></em> ?<em class="replaceable"><code>string</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746754"></a><h2>Description</h2><p>
+	  The <span><strong class="command">join</strong></span> command takes a
+	  <code class="option"><em class="replaceable"><code>list</code></em></code> argument,
+	  and optionally, a
+	  <code class="option"><em class="replaceable"><code>string</code></em></code>
+	  argument.  It joins all elements of the list together with
+	  the string, or, if a string is not provided, with a space.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746782"></a><h2>Example</h2><pre class="programlisting">
+puts [join {a b c} "|"]
+	  </pre><p>Produces:</p><pre class="screen">a|b|c</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="lappend"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>lappend — Append an element to a list.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">lappend</code>  <em class="replaceable"><code>listreference</code></em> <em class="replaceable"><code>element</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746856"></a><h2>Description</h2><p>
+	  The <span><strong class="command">lappend</strong></span> takes a reference to a list,
+	  and an element to add to that list.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746873"></a><h2>Example</h2><pre class="programlisting">
+set foo a
+lappend &amp;foo "b"
+puts $foo
+lappend &amp;foo "c d"
+puts $foo
+	  </pre><p>Produces:</p><pre class="screen">a b
+a b {c d}</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="lindex"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>lindex — Return the Nth element of a list</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">lindex</code>  <em class="replaceable"><code>list</code></em> <em class="replaceable"><code>index</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746950"></a><h2>Description</h2><p>
+	  The <span><strong class="command">lindex</strong></span> command takes a list and an
+	  index number as arguments, and return's the index'th element
+	  of the list.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4746967"></a><h2>Example</h2><pre class="programlisting">
+puts [lindex {a b c} 2]
+	</pre><p>Produces:</p><pre class="screen">c</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="list"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>list — Create a list</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">list</code>  <em class="replaceable"><code>element</code></em> ?<em class="replaceable"><code>element</code></em>...?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747048"></a><h2>Description</h2><p>
+	  The <span><strong class="command">list</strong></span> command takes any number of
+	  arguments and returns a list.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747065"></a><h2>Example</h2><pre class="programlisting">
+puts [list a b c [list 1 2 3]]
+	</pre><p>Produces:</p><pre class="screen">a b c {1 2 3}</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="llen"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>llen — List length.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">llen</code>  <em class="replaceable"><code>list</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747130"></a><h2>Description</h2><p>
+	  The <span><strong class="command">llen</strong></span> returns the length of its list
+	  argument.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747147"></a><h2>Example</h2><pre class="programlisting">
+puts [llen {1 2 3 {a b c}}]
+	  </pre><p>Produces:</p><pre class="screen">4</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="lset"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>lset — Set list elements.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">lset</code>  <em class="replaceable"><code>listref</code></em> <em class="replaceable"><code>index</code></em> ?<em class="replaceable"><code>replacement</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747230"></a><h2>Description</h2><p>
+	  The <span><strong class="command">lset</strong></span> command sets the
+	  <code class="option"><em class="replaceable"><code>index</code></em></code>'th element
+	  of the list to
+	  <code class="option"><em class="replaceable"><code>replacement</code></em></code>.  If
+	  <code class="option"><em class="replaceable"><code>replacement</code></em></code> is
+	  not present, then the element is deleted.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747262"></a><h2>Example</h2><pre class="programlisting">
+    set lst {a b c}
+    lset &amp;lst 1 x
+    puts $lst
+
+    lset &amp;lst 1
+    puts $lst
+	  </pre><p>Produces:</p><pre class="screen">a x c
+a c</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="proc"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>proc — Create a new procedure.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">proc</code>  <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>arglist</code></em> <em class="replaceable"><code>body</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747346"></a><h2>Description</h2><p>
+	  The <span><strong class="command">proc</strong></span> command creates new procedures,
+	  which are virtually indistinguishable from built-in Hecl
+	  commands.  <code class="option"><em class="replaceable"><code>name</code></em></code>
+	  is the name of the new command,
+	  <code class="option"><em class="replaceable"><code>arglist</code></em></code> is a
+	  list of arguments that the new command will take and make
+	  available as local variables within the
+	  <code class="option"><em class="replaceable"><code>body</code></em></code>, which is
+	  the code executed every time the command is called.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747382"></a><h2>Example</h2><pre class="programlisting">
+proc addlist {lst} {
+    set res 0
+    foreach e &amp;lst {
+	incr &amp;res $e
+    }
+    return &amp;res
+}
+
+puts [addlist {1 2 3 4 5}]
+	  </pre><p>Produces:</p><pre class="screen">15</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="puts"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>puts — Print text.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">puts</code>  <em class="replaceable"><code>text</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747450"></a><h2>Description</h2><p>
+	  The <span><strong class="command">puts</strong></span> command prints
+	  <code class="option"><em class="replaceable"><code>text</code></em></code> to stdout.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747471"></a><h2>Example</h2><pre class="programlisting">
+puts "Hello, world"
+	  </pre><p>Produces:</p><pre class="screen">Hello, world</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="return"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>return — Returns a value from a procedure.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">return</code>  <em class="replaceable"><code>value</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747537"></a><h2>Description</h2><p>
+	  The <span><strong class="command">return</strong></span> command returns a value from a
+	  <span><strong class="command">proc</strong></span> command.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747559"></a><h2>Example</h2><pre class="programlisting">
+proc someproc {} {
+    set res 1
+    return &amp;res
+    set res 2
+    return &amp;res
+}
+puts [someproc]
+	  </pre><p>Produces:</p><pre class="screen">1</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="search"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>search — Find the first instance of something in a list.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">search</code>  <em class="replaceable"><code>list</code></em> <em class="replaceable"><code>varname</code></em> <em class="replaceable"><code>script</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747646"></a><h2>Description</h2><p>
+	  The <span><strong class="command">search</strong></span> command is similar to
+	  <span><strong class="command">filter</strong></span> in functionality, except that it
+	  stops searching on the first match.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747669"></a><h2>Example</h2><pre class="programlisting">
+set lst {1 2 3 4 5 4 3 2 1}
+puts [search $lst x {= $x 4}]
+	  </pre><p>Produces:</p><pre class="screen">4</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="set"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>set — Set a variable.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">set</code>  <em class="replaceable"><code>varname</code></em> ?<em class="replaceable"><code>value</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747743"></a><h2>Description</h2><p>
+	  The <span><strong class="command">set</strong></span> sets the value of a variable
+	  <code class="option"><em class="replaceable"><code>varname</code></em></code> to value
+	  <code class="option"><em class="replaceable"><code>value</code></em></code>. If
+	  <code class="option"><em class="replaceable"><code>value</code></em></code> is not
+	  provided, returns the value of
+	  <code class="option"><em class="replaceable"><code>varname</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747779"></a><h2>Example</h2><pre class="programlisting">
+set foo "bar"
+set bee bop
+puts "foo is $foo and bee is $bee"
+	  </pre><p>Produces:</p><pre class="screen">1
+foo is bar and bee is bop
+</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="sindex"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>sindex — Return the index'th character of string.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">sindex</code>  <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>index</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747854"></a><h2>Description</h2><p>
+	  The <span><strong class="command">sindex</strong></span> command returns the
+	  <code class="option"><em class="replaceable"><code>index</code></em></code>'th
+	  character of <code class="option"><em class="replaceable"><code>string</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747880"></a><h2>Example</h2><pre class="programlisting">
+puts [sindex "Hello, world" 0]
+puts [sindex "Hello, world" 11]
+	  </pre><p>Produces:</p><pre class="screen">H
+d</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="slen"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>slen — String length.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">slen</code>  <em class="replaceable"><code>string</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747945"></a><h2>Description</h2><p>
+	  The <span><strong class="command">slen</strong></span> returns the length of
+	  <code class="option"><em class="replaceable"><code>string</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4747966"></a><h2>Example</h2><pre class="programlisting">
+puts [slen "abcdefghijklmnopqrstuvwxyz"]
+	  </pre><p>Produces:</p><pre class="screen">26</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="sort"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>sort — Sorts list alphabetically.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">sort</code>  <em class="replaceable"><code>list</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748032"></a><h2>Description</h2><p>
+	  The <span><strong class="command">sort</strong></span> command returns an
+	  alphabetically sorted list of the contents of
+	  <code class="option"><em class="replaceable"><code>list</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748053"></a><h2>Example</h2><pre class="programlisting">
+puts [sort {padova rovigo verona vicenza venezia treviso belluno}]
+	  </pre><p>Produces:</p><pre class="screen">belluno padova rovigo treviso venezia verona vicenza
+</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="source"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>source — Evaluate Hecl script in a file.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">source</code>  <em class="replaceable"><code>filename</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748120"></a><h2>Description</h2><p>
+	  The <span><strong class="command">source</strong></span> command evaluates the Hecl
+	  script located in file
+	  <code class="option"><em class="replaceable"><code>filename</code></em></code>.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748142"></a><h2>Example</h2><pre class="programlisting">
+# Variable foo is defined as "Hello world" in foo.hcl
+source foo.hcl
+puts $foo
+	  </pre><p>Produces:</p><pre class="screen">Hello world</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="split"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>split — Split a string into a list.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">split</code>  <em class="replaceable"><code>string</code></em> ?<em class="replaceable"><code>splitstring</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748220"></a><h2>Description</h2><p>
+	  The <span><strong class="command">split</strong></span> command takes a string and
+	  splits it into a list, divided by
+	  <code class="option"><em class="replaceable"><code>splitstring</code></em></code>,
+	  which defaults to " " if not present.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748243"></a><h2>Example</h2><pre class="programlisting">
+puts [split "aaa;bbb;ccc" ";"]
+puts [split "aaa bbb ccc"]
+puts [split "aaaxbbbycccxyddd" "xy"]
+	  </pre><p>Produces:</p><pre class="screen">aaa bbb ccc
+aaa bbb ccc
+aaaxbbbyccc ddd</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="time"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>time — Time the execution of a script.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">time</code>  <em class="replaceable"><code>script</code></em> ?<em class="replaceable"><code>repetitions</code></em>?</p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748318"></a><h2>Description</h2><p>
+	  The <span><strong class="command">time</strong></span> command executes
+	  <code class="option"><em class="replaceable"><code>script</code></em></code>
+	  <code class="option"><em class="replaceable"><code>repetitions</code></em></code>
+	  times, if
+	  <code class="option"><em class="replaceable"><code>repetitions</code></em></code> is
+	  present, or once if not.  It measures the amount of time
+	  taken by this execution in milliseconds, and returns it.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748351"></a><h2>Example</h2><pre class="programlisting">
+set time [time {
+    set i 0
+    while { &lt; &amp;i 100 } {
+	incr &amp;i
+    }
+} 10]
+puts "Time is $time"
+	  </pre><p>Produces:</p><pre class="screen">Time is 6</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="true"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>true — Returns true.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">true</code> </p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748410"></a><h2>Description</h2><p>
+	  The <span><strong class="command">true</strong></span> command returns 1, or true.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748427"></a><h2>Example</h2><pre class="programlisting">
+if { true } {
+    puts "true is true"
+}
+	  </pre><p>Produces:</p><pre class="screen">true is true</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="upeval"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>upeval — Evaluate script in next stack frame up.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">upeval</code>  <em class="replaceable"><code>script</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748493"></a><h2>Description</h2><p>
+	  The <span><strong class="command">upeval</strong></span> command evaluates
+	  <code class="option"><em class="replaceable"><code>script</code></em></code> one stack
+	  frame up from the current stack frame.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748515"></a><h2>Example</h2><pre class="programlisting">
+proc stackframe {} {
+    upeval { incr &amp;foo }
+}
+set foo 1
+stackframe
+puts $foo
+	  </pre><p>Produces:</p><pre class="screen">2</pre></div></div><div class="refentry" lang="en" xml:lang="en"><div class="refentry.separator"><hr /></div><a id="while"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>while — While loop.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">while</code>  <em class="replaceable"><code>condition</code></em> <em class="replaceable"><code>body</code></em></p></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748589"></a><h2>Description</h2><p>
+	  The <span><strong class="command">while</strong></span> command continues to evaluate
+	  <code class="option"><em class="replaceable"><code>body</code></em></code> while
+	  <code class="option"><em class="replaceable"><code>condition</code></em></code> is true.
+	</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="id4748615"></a><h2>Example</h2><pre class="programlisting">
+set i 0
+while { &lt; &amp;i 6 } {
+    puts "i is $i"
+    incr &amp;i
+}
+	  </pre><p>Produces:</p><pre class="screen">i is 0
+i is 1
+i is 2
+i is 3
+i is 4
+i is 5
+</pre></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="heclandjava"></a>Interfacing Hecl and Java</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="#id4748652">Calling Hecl code from Java</a></span></dt><dt><span class="section"><a href="#id4748748">Creating new Hecl commands</a></span></dt><dt><span class="section"><a href="#id4749032">JavaDocs</a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4748652"></a>Calling Hecl code from Java</h3></div></div></div><p>
+	Hecl is not a replacement for Java, and is indeed meant to
+	work hand in hand with Java.  We attempt to make it as easy as
+	possible to call Java from Hecl, via the creation of new Hecl
+	commands that can call Java code, in addition to calling Hecl
+	from Java, which is a matter of a few lines of code.  For
+	example, to evaluate a Hecl file from Java:
+      </p><pre class="programlisting">
+	try {
+	    /* First, create a new interpreter, and pass it a
+	     * mechanism to load resources with - in this case,
+	     * files. */
+	    Interp interp = new Interp(new LoadFile());
+	    /* Initialize the standard Hecl environment. */
+	    com.dedasys.hecl.Standard.init(interp);
+	    /* Evaluate the file at args[0] */
+	    Eval.eval(interp, interp.getscript(args[0]));
+	} catch (Exception e) {
+	    System.err.println(e);
+	}
+      </pre><p>
+	The above code creates a new interpreter.  Currently,
+	interpreters must know about how they are to load files, so the
+	interpreter is instantiated with a new
+	<code class="classname">LoadFile</code>, which, as the name suggests,
+	contains code to load files from the file system.  Since Hecl is
+	also meant for embedded environments, it is also possible to
+	create loader classes that load code from a compiled-in string,
+	from the network, or whatever other form of storage you may have
+	in mind.
+      </p><p>
+	After creating the interpreter, we call
+	<code class="classname">Standard</code>'s <code class="methodname">init</code>
+	method.  <code class="classname">Standard</code> is a class that adds
+	several commands that we want to be present in standard J2SE
+	Hecl, but not in J2ME Hecl.
+      </p><p>
+	The real work is done by <code class="methodname">Eval.init</code>,
+	which takes an interpreter and a Hecl
+	<code class="classname">Thing</code> as arguments.  In this case, the
+	<code class="classname">Thing</code> is the Hecl code read from the disk
+	by <code class="classname">LoadFile</code>.
+      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4748748"></a>Creating new Hecl commands</h3></div></div></div><p>
+	Creating new Hecl commands is relatively simple.  The first
+	step is to create a new class for your command in a file, say
+	<code class="filename">HelloCmd.java</code>.  The code would look
+	something like this:
+      </p><pre class="programlisting">
+class HelloCmd implements Command {
+
+    public void cmdCode(Interp interp, Thing[] argv)
+	throws HeclException {
+
+	System.out.println("Hello world");
+    }
+}
+      </pre><p>
+	The command takes an interpreter and an array of
+	<code class="classname">Thing</code>s as arguments, where the first
+	<code class="classname">Thing</code> is the name of the command
+	itself, and the others are the arguments to it.
+      </p><p>
+	The "glue" that connects the name of your Hecl command with
+	the Java code is also relatively simple:
+      </p><pre class="programlisting">
+	interp.commands.put("hello", new HelloCmd());
+      </pre><p>
+	Easy, no?  There are a few other useful methods that you
+	should be aware of, to share variables between Hecl and Java,
+	and to return results from your Hecl commands:
+      </p><div class="itemizedlist"><ul type="disc"><li><code class="methodsynopsis"><span class="methodname">interp.setVar</span>(<span class="methodparam"><span class="type">Thing </span><span class="parameter">varname</span></span>,<br />              <span class="methodparam"><span class="type">Thing </span><span class="parameter">value</span></span>);</code>
+	  This sets the value of <em class="parameter"><code>varname</code></em> to
+	  some value.
+	</li><li><code class="methodsynopsis"><span class="type">Thing </span><span class="methodname">interp.getVar</span>(<span class="methodparam"><span class="type">Thing </span><span class="parameter">varname</span></span>);</code><br /><code class="methodsynopsis"><span class="type">Thing </span><span class="methodname">interp.getVar</span>(<span class="methodparam"><span class="type">String </span><span class="parameter">varname</span></span>);</code>
+	  These methods take a variable name, either in string form or
+	  as a <code class="classname">Thing</code>, and return the
+	  <code class="classname">Thing</code> associated with that variable.
+	</li><li><p><code class="varname">interp.result</code> is used to set the
+	    result of a command.  This oft-used variable is accessed
+	    directly for simplicity, speed and smaller code size.
+	  </p></li><li><code class="methodsynopsis"><span class="type">int </span><span class="methodname">IntThing.get</span>(<span class="methodparam"><span class="type">Thing </span><span class="parameter">thing</span></span>);</code>
+	  Get an int from a Thing.
+	</li><li><code class="methodsynopsis"><span class="type">String </span><span class="methodname">StringThing.get</span>(<span class="methodparam"><span class="type">Thing </span><span class="parameter">thing</span></span>);</code>
+	  Get a String from a Thing.
+	</li><li><code class="methodsynopsis"><span class="type">Thing </span><span class="methodname">IntThing.create</span>(<span class="methodparam"><span class="type">int </span><span class="parameter">i</span></span>);</code>
+	  Creates a new thing from an int.
+	</li></ul></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id4749032"></a>JavaDocs</h3></div></div></div><p>
+	For the complete Hecl javadoc documentation, see the <a href="jdocs" target="_top">Hecl Javadocs</a>.  And, of course, look at
+	  the Hecl source code to see how it's done!
+      </p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="j2me"></a>Hecl and J2ME</h2></div></div></div><p>
+      Hecl is designed to be small enough to run on mobile devices
+      such as cell phones.  This means that it has been necessary to
+      limit ourselves to Java API's that work with J2ME.
+    </p><p>FIXME - more later.</p></div></div></body></html>

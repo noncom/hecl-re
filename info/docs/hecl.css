@@ -1,0 +1,93 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    margin-left: 4em;
+    margin-right: 5em;
+}
+
+td {
+    font-size: 13px;
+}
+
+h2 {
+    font-size: 110%;
+}
+
+div.cmdsynopsis {
+    font-family: mono;
+}
+
+pre.programlisting {
+    background-color: #ccccff;
+    padding: 1ex;
+    margin-left: 5%;
+}
+
+pre.screen {
+    padding: 1ex;
+    margin-left: 5%;
+    background-color: #ccffcc;
+}
+
+A:link {
+    color: #3333cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+A:visited {
+    color: #3333cc;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+A:hover {
+    text-decoration: underline;
+}
+
+A.top:visited {
+    color: #5555ff;
+}
+
+img {
+    border: 0;
+}
+
+div.mediaobject img {
+    background-color: #777777;
+    padding: 1em;
+    margin: auto;
+}
+
+div.screenshot {
+    margin: auto;
+}
+
+div.mediaobject {
+    margin: auto;
+    text-align: center;
+}
+
+div.caption {
+    font-size: smaller;
+    font-weight: bold;
+}
+
+div.section {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+span.guibutton {
+    font-weight: bold;
+}
+
+.navheader {
+    background-color: #f9b93e;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navheader th {
+    font-size: 25px;
+}
