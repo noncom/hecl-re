@@ -1,2 +1,3 @@
 rootProject.name = 'hecl'
 
+include ':hecl_core', ':hecl_se', ':hecl_me'
