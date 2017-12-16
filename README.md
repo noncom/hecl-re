@@ -18,7 +18,7 @@ The following had been done:
 * Moved all the #ifdef compilation flags that were intended to be used by the original Ant build scripts to resolve in runtime from the new class `_Settings`
 * Tried to save as much of the original code as possible, only cutting out the parts that were completely irrelevant
 * All the original documentation and information texts are preserved (look inside the `info` folder)
-
+* The artifact is published to Clojars Maven repo https://clojars.org/hecl and you can get it into your Mavenized projects, just be sure to add the Clojars repo to your repos.  
 
 What else is there to do?
 =========================
@@ -28,7 +28,7 @@ The work is not yet over, there are some things left:
 * Possibly: relocate all the out-of-the-box commands to a separate package instead of them just littering the `org.hecl` package
 * Possibly: break down the core package in subpackages
 * Transform the project to a Kotlin project. For the powers.
-* Publish the resulting artifact ot a maven repo
+* Publish the resulting artifact to other maven repos?
 * Port the original Hecl Android part to a modern Android project that would depend on the main library artifact (see the **Multiproject Notice** below)
 
 The package relocations would require fixing the javadocs which mentions their paths. IDEA can take care of some of it, but I did not yet try to actually do it and see how would it work.

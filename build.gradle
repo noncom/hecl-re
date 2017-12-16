@@ -14,6 +14,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'maven'
 
 sourceSets.main.java.srcDirs = ["src/main/java"]
 
@@ -52,4 +53,14 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "https://clojars.org/repo") {
+                authentication(userName: mavenUser, password: mavenPassword)
+            }
+        }
+    }
 }
