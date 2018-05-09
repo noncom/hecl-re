@@ -84,7 +84,7 @@ public class Interp extends Thread/*implements Runnable*/ {
      * mapping from the strings containing command names to the code
      * implementing the commands.
      */
-    protected Hashtable commands = new Hashtable();
+    protected Hashtable<String, Command> commands = new Hashtable();
 
     /**
      * The <code>auxdata</code> <code>Hashtable</code> is a place to
@@ -384,6 +384,17 @@ public class Interp extends Thread/*implements Runnable*/ {
      */
     public synchronized boolean commandExists(String name) {
         return commands.containsKey(name);
+    }
+
+    /**
+     * The <code>getCommand</code> method returns the command if it
+     * exists, otherwise null.
+     *
+     * @param name a <code>String</code> value
+     * @return a <code>Command</code> value
+     */
+    public synchronized Command getCommand(String name) {
+        return commands.get(name);
     }
 
     /**
